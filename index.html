@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLP-1 Competitor Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Competitive Intelligence</p>
+        <h1>GLP-1 Competitor Dashboard</h1>
+        <p class="hero-copy">Track how Shotsy, Pep, and MeAgain compare across ratings, review volume, Android install bands, and recurring review themes.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-card">
+          <span>Data refreshed</span>
+          <strong id="generated-at">Loading...</strong>
+        </div>
+        <div class="meta-card">
+          <span>Coverage</span>
+          <strong>iOS + Android public store data</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="notes card">
+      <h2>What This Dashboard Uses</h2>
+      <ul id="notes-list"></ul>
+    </section>
+
+    <section class="leaderboard card">
+      <div class="section-heading">
+        <h2>Competitor Snapshot</h2>
+        <p>Live store metrics plus public review exports.</p>
+      </div>
+      <div class="table-wrap">
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>App</th>
+              <th>iOS Rating</th>
+              <th>iOS Rating Count</th>
+              <th>Android Rating</th>
+              <th>Android Rating Count</th>
+              <th>Android Installs</th>
+              <th>Public Reviews Exported</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="app-grid" id="app-grid"></section>
+
+    <section class="reviews-panel card">
+      <div class="section-heading split">
+        <div>
+          <h2>Review Explorer</h2>
+          <p>Filter raw review text by app, platform, sentiment, and keyword.</p>
+        </div>
+        <div class="filters">
+          <select id="app-filter"></select>
+          <select id="platform-filter"></select>
+          <select id="sentiment-filter"></select>
+          <input id="keyword-filter" type="search" placeholder="Search review text">
+        </div>
+      </div>
+      <div class="review-results" id="review-results"></div>
+    </section>
+  </div>
+
+  <template id="app-card-template">
+    <article class="app-card card">
+      <div class="app-card-head">
+        <div>
+          <p class="eyebrow app-name"></p>
+          <h2 class="app-title"></h2>
+        </div>
+        <div class="store-links"></div>
+      </div>
+      <div class="kpi-row"></div>
+      <div class="platform-grid"></div>
+      <div class="themes-grid"></div>
+      <div class="samples-grid"></div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
