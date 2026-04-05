@@ -37,6 +37,14 @@ APPS = {
         "apple_url": "https://apps.apple.com/us/app/id6744178534",
         "google_url": None,
     },
+    "GlucoPal": {
+        "ios_sheet": "GlucoPal iOS Reviews",
+        "android_sheet": "GlucoPal Android Reviews",
+        "apple_id": "6670317407",
+        "google_id": None,
+        "apple_url": "https://apps.apple.com/us/app/zepbound-tracker-by-glucopal/id6670317407",
+        "google_url": None,
+    },
 }
 
 STOPWORDS = {
@@ -45,7 +53,7 @@ STOPWORDS = {
     "your", "about", "would", "could", "should", "into", "when", "been", "being", "really", "only",
     "because", "after", "before", "than", "then", "them", "more", "most", "some", "much", "many",
     "also", "can", "cant", "don't", "does", "did", "use", "using", "used", "like", "love", "great",
-    "good", "nice", "best", "tracker", "glp", "shotsy", "pep", "meagain", "zero", "markup", "meds"
+    "good", "nice", "best", "tracker", "glp", "shotsy", "pep", "meagain", "glucopal", "zero", "markup", "meds"
 }
 
 THEMES = {
@@ -237,6 +245,8 @@ def build_dataset():
             "Apple public App Store pages expose ratings and rating counts, but not public download counts.",
             "Google Play exposes install bands such as 10K+ or 50K+, not exact downloads.",
             "Review exports reflect the maximum public review rows we could fetch at build time and may be lower than total historical review counts shown by the stores.",
+            "GlucoPal currently has no public Google Play listing; its website says Android is coming soon.",
+            "GlucoPal's App Store review RSS feed was not publicly accessible at build time, so the dashboard uses the visible public App Store review text we could reach plus live storefront ratings.",
         ],
     }
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")

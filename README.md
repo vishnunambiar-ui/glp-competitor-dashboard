@@ -1,6 +1,8 @@
 # GLP Competitor Dashboard
 
-Static competitor dashboard for public App Store and Google Play signals across Shotsy, Pep, and MeAgain.
+[![Live dashboard](https://img.shields.io/badge/live-dashboard-1f6feb?style=flat-square)](https://vishnunambiar-ui.github.io/glp-competitor-dashboard/)
+
+Static competitor dashboard for public App Store and Google Play signals across Shotsy, Pep, MeAgain, and GlucoPal.
 
 ## Files
 
