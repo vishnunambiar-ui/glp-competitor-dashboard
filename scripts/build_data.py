@@ -45,6 +45,38 @@ APPS = {
         "apple_url": "https://apps.apple.com/us/app/zepbound-tracker-by-glucopal/id6670317407",
         "google_url": None,
     },
+    "GLP1 Tracker": {
+        "ios_sheet": "GLP1 Tracker iOS Reviews",
+        "android_sheet": "GLP1 Tracker Android Reviews",
+        "apple_id": "6744840085",
+        "google_id": "com.hussainmustafa.glp1tracker",
+        "apple_url": "https://apps.apple.com/us/app/glp-1-tracker-tirzepatide/id6744840085",
+        "google_url": "https://play.google.com/store/apps/details?id=com.hussainmustafa.glp1tracker&hl=en_US&gl=US",
+    },
+    "ShotPal": {
+        "ios_sheet": "ShotPal iOS Reviews",
+        "android_sheet": "ShotPal Android Reviews",
+        "apple_id": "6752549970",
+        "google_id": None,
+        "apple_url": "https://apps.apple.com/us/app/shotpal/id6752549970",
+        "google_url": None,
+    },
+    "Happy Scale": {
+        "ios_sheet": "Happy Scale iOS Reviews",
+        "android_sheet": "Happy Scale Android Reviews",
+        "apple_id": "532430574",
+        "google_id": None,
+        "apple_url": "https://apps.apple.com/us/app/happy-scale/id532430574",
+        "google_url": None,
+    },
+    "Glapp": {
+        "ios_sheet": "Glapp iOS Reviews",
+        "android_sheet": "Glapp Android Reviews",
+        "apple_id": "6756984097",
+        "google_id": None,
+        "apple_url": "https://apps.apple.com/us/app/glapp-smart-glp-1-tracker/id6756984097",
+        "google_url": None,
+    },
 }
 
 STOPWORDS = {
@@ -53,7 +85,7 @@ STOPWORDS = {
     "your", "about", "would", "could", "should", "into", "when", "been", "being", "really", "only",
     "because", "after", "before", "than", "then", "them", "more", "most", "some", "much", "many",
     "also", "can", "cant", "don't", "does", "did", "use", "using", "used", "like", "love", "great",
-    "good", "nice", "best", "tracker", "glp", "shotsy", "pep", "meagain", "glucopal", "zero", "markup", "meds"
+    "good", "nice", "best", "tracker", "glp", "shotsy", "pep", "meagain", "glucopal", "shotpal", "glapp", "happy", "scale", "zero", "markup", "meds"
 }
 
 THEMES = {
@@ -247,6 +279,7 @@ def build_dataset():
             "Review exports reflect the maximum public review rows we could fetch at build time and may be lower than total historical review counts shown by the stores.",
             "GlucoPal currently has no public Google Play listing; its website says Android is coming soon.",
             "GlucoPal's App Store review RSS feed was not publicly accessible at build time, so the dashboard uses the visible public App Store review text we could reach plus live storefront ratings.",
+            "Several newer iOS apps expose only a handful of visible public review blocks on their App Store pages even when rating counts are higher.",
         ],
     }
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")
