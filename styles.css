@@ -165,7 +165,7 @@ th {
   font-weight: 700;
 }
 
-.kpi-row, .platform-grid, .themes-grid, .samples-grid {
+.kpi-row, .visuals-grid, .platform-grid, .themes-grid, .samples-grid {
   display: grid;
   gap: 12px;
 }
@@ -202,8 +202,53 @@ th {
   margin-bottom: 14px;
 }
 
+.visuals-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
 .platform-card h3 {
   margin-bottom: 10px;
+}
+
+.visual-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.visual-card h3 {
+  margin-bottom: 12px;
+}
+
+.visual-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.store-icon,
+.store-shot {
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: white;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(31, 42, 36, 0.08);
+}
+
+.store-icon {
+  width: 96px;
+  min-width: 96px;
+  height: 96px;
+}
+
+.store-shot {
+  width: 140px;
+  min-width: 140px;
+  height: 280px;
 }
 
 .metric-line {
@@ -290,7 +335,7 @@ th {
 }
 
 @media (max-width: 900px) {
-  .hero, .kpi-row, .platform-grid, .themes-grid, .samples-grid {
+  .hero, .kpi-row, .visuals-grid, .platform-grid, .themes-grid, .samples-grid {
     grid-template-columns: 1fr;
   }
 

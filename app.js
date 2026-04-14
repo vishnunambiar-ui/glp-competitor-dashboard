@@ -65,6 +65,29 @@ function samples(items) {
   `).join('');
 }
 
+function renderStoreVisuals(platformLabel, platformData, fallbackCopy) {
+  const screenshots = platformData.screenshots || [];
+  const icon = platformData.icon;
+  if (!icon && !screenshots.length) {
+    return `
+      <div class="visual-card">
+        <h3>${platformLabel} Store Visuals</h3>
+        <p class="note-text">${fallbackCopy}</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="visual-card">
+      <h3>${platformLabel} Store Visuals</h3>
+      <div class="visual-strip">
+        ${icon ? `<img class="store-icon" src="${icon}" alt="${platformLabel} app icon" loading="lazy">` : ''}
+        ${screenshots.slice(0, 5).map(url => `<img class="store-shot" src="${url}" alt="${platformLabel} screenshot" loading="lazy">`).join('')}
+      </div>
+    </div>
+  `;
+}
+
 function buildAppCards(apps) {
   const root = document.querySelector('#app-grid');
   const template = document.querySelector('#app-card-template');
@@ -85,6 +108,11 @@ function buildAppCards(apps) {
       metricCard('Top Sentiment', Object.entries(app.overall.sentiment_breakdown || {}).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A'),
       metricCard('Android Installs', app.android.downloads || 'N/A', app.android.downloads_note || ''),
     ].join('');
+
+    node.querySelector('.visuals-grid').innerHTML = `
+      ${renderStoreVisuals('iOS', app.ios, 'Apple is currently exposing app artwork, but not screenshot galleries for this app in the public metadata feed.')}
+      ${renderStoreVisuals('Android', app.android, 'No public Google Play screenshots available for this app right now.')}
+    `;
 
     node.querySelector('.platform-grid').innerHTML = `
       <div class="platform-card">

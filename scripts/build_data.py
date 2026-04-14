@@ -204,27 +204,52 @@ def fetch_apple_metrics(app_id):
     try:
         result = requests.get(url, timeout=30).json().get("results", [{}])[0]
     except Exception:
-        return {"store_rating": None, "store_rating_count": None, "downloads": None, "downloads_note": "Apple public store does not expose download counts."}
+        return {
+            "store_rating": None,
+            "store_rating_count": None,
+            "downloads": None,
+            "downloads_note": "Apple public store does not expose download counts.",
+            "icon": None,
+            "screenshots": [],
+        }
     return {
         "store_rating": result.get("averageUserRating"),
         "store_rating_count": result.get("userRatingCount"),
         "downloads": None,
         "downloads_note": "Apple public store does not expose download counts.",
+        "icon": result.get("artworkUrl512") or result.get("artworkUrl100") or result.get("artworkUrl60"),
+        "screenshots": result.get("screenshotUrls") or result.get("ipadScreenshotUrls") or [],
     }
 
 
 def fetch_google_metrics(app_id):
     if not app_id:
-        return {"store_rating": None, "store_rating_count": None, "downloads": None, "downloads_note": "No public Google Play listing found."}
+        return {
+            "store_rating": None,
+            "store_rating_count": None,
+            "downloads": None,
+            "downloads_note": "No public Google Play listing found.",
+            "icon": None,
+            "screenshots": [],
+        }
     try:
         result = gp_app(app_id, lang="en", country="us")
     except Exception:
-        return {"store_rating": None, "store_rating_count": None, "downloads": None, "downloads_note": "Unable to fetch Google Play listing."}
+        return {
+            "store_rating": None,
+            "store_rating_count": None,
+            "downloads": None,
+            "downloads_note": "Unable to fetch Google Play listing.",
+            "icon": None,
+            "screenshots": [],
+        }
     return {
         "store_rating": result.get("score"),
         "store_rating_count": result.get("ratings") or result.get("reviews"),
         "downloads": result.get("installs") or result.get("realInstalls"),
         "downloads_note": "Google Play exposes public install bands rather than exact installs.",
+        "icon": result.get("icon"),
+        "screenshots": (result.get("screenshots") or [])[:8],
     }
 
 
